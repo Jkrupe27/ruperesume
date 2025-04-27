@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Justin Rupe — Curiosity Builds Bridges</title>
+  <style>
+    /* ===== Global Reset ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      /* Tropic Treats gradient meets sports vibes */
+      background: linear-gradient(to bottom, #71AFE5 0%, #ffe9d6 100%);
+      overflow-x: hidden;
+      position: relative;
+      color: #222;
+    }
+
+    /* ===== Floating Elements ===== */
+    .float-sports, .float-fruit {
+      position: absolute;
+      opacity: 0.6;
+      animation: float 6s ease-in-out infinite;
+      mix-blend-mode: color-burn; 
+    }
+    /* Sports floaters */
+    .paddle     { top: 10%; left: 5%;   width: 100px; }
+    .pickleball { top: 30%; right: 8%;  width: 80px; }
+    .baseball   { bottom: 12%; left: 10%; width: 70px; }
+    .golf       { bottom: 15%; right: 12%; width: 90px; }
+    /* Watermelon floats */
+    .fruit1     { top: 5%; right: 20%;  width: 80px; animation-delay: 2s; }
+    .fruit2     { bottom: 8%; left: 25%; width: 80px; animation-delay: 4s; }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-20px); }
+    }
+
+    /* ===== PDP Container ===== */
+    .pdp {
+      max-width: 900px;
+      margin: 60px auto;
+      background:
+        radial-gradient(circle at top left, #fff9f0 0%, #71AFE5 80%),
+        rgba(255,255,255,0.85);
+      background-blend-mode: overlay;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== Hero / Product Image ===== */
+    .hero-image {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    /* ===== Nav / Badge ===== */
+    .nav {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #111;
+    }
+    .badge {
+      margin-left: auto;
+      background: #ff9900;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    @keyframes ping {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .badge.ping {
+      animation: ping 0.6s ease-out;
+    }
+
+    /* ===== Title & Reviews ===== */
+    .title {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      color: #111;
+    }
+    .reviews {
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    .stars {
+      color: #71AFE5;
+      margin-right: 8px;
+    }
+    .count { color: #555; }
+
+    /* ===== Price & Stock ===== */
+    .price-stock {
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 24px;
+    }
+    .price {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-right: 32px;
+    }
+    .stock {
+      color: #007600;
+      font-weight: bold;
+    }
+
+    /* ===== Product Details (Skills) ===== */
+    .details {
+      margin-bottom: 28px;
+    }
+    .details h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #0073bb;
+    }
+    .details ul {
+      list-style: none;
+      padding-left: 1.2rem;
+    }
+    .details ul li {
+      margin-bottom: 6px;
+      position: relative;
+    }
+    .details ul li:before {
+      content: '•';
+      position: absolute;
+      left: -1.2rem;
+      color: #0073bb;
+    }
+    .details p {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* ===== About & Q&A ===== */
+    .about, .qa {
+      margin-bottom: 28px;
+    }
+    .about h3, .qa h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: #0073bb;
+    }
+    .about p, .qa p {
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .qa .question {
+      font-weight: bold;
+      margin-top: 8px;
+    }
+    .qa .answer {
+      margin-left: 1rem;
+      margin-bottom: 12px;
+    }
+
+    /* ===== Similar Items ===== */
+    .similar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .similar .item {
+      flex: 1 1 60px;
+      background: #f0f0f0;
+      text-align: center;
+      padding: 8px 0;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Curiosity builds bridges where doubt builds walls.",
+  "image": [
+    "https://yourdomain.com/images/pickleball_paddle.png",
+    "https://yourdomain.com/images/floating-watermelon.png",
+    "https://yourdomain.com/images/baseball.png",
+    "https://yourdomain.com/images/golf_club.png"
+  ],
+  "description": "Currently an Account Executive fueled by relentless curiosity, creative drive, and a people-first spirit. Passionate about helping businesses thrive at the crossroads of commerce, design, and innovation.",
+  "brand": {
+    "@type": "Person",
+    "name": "Justin Rupe"
+  },
+  "sku": "handcrafted-original",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://yourdomain.com/index.html",
+    "availability": "https://schema.org/InStock",
+    "inventoryLevel": {
+      "@type": "QuantitativeValue",
+      "value": 1
+    },
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Person",
+      "name": "Justin Rupe"
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "1"
+  },
+  "review": {
+    "@type": "Review",
+    "author": {
+      "@type": "Person",
+      "name": "Anonymous"
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "5",
+      "bestRating": "5"
+    },
+    "reviewBody": "⭐️⭐️⭐️⭐️⭐️ | 1 Rating | (801)499-7330"
+  },
+  "featureList": [
+    "E-Commerce Growth Strategy",
+    "AI Workflow Innovation",
+    "Human-First Consultative Sales",
+    "HubSpot CRM Automation",
+    "SEO & Structured Data Optimization",
+    "Creative UX and Web Design Principles"
+  ]
+}
+</script>
+
+</head>
+<body>
+
+  <!-- Floating Sports Vibes -->
+  <img src="pickleball_paddle.png" class="float-sports paddle"     alt="Pickleball Paddle"/>
+  <img src="pickleball_ball.png"   class="float-sports pickleball" alt="Pickleball Ball"/>
+  <img src="baseball.png"          class="float-sports baseball"   alt="Baseball"/>
+  <img src="golf_club.png"         class="float-sports golf"       alt="Golf Club"/>
+
+  <!-- Floating Watermelon Vibes -->
+  <img src="floating-watermelon.png" class="float-fruit fruit1"    alt="Floating Watermelon"/>
+  <img src="floating-watermelon.png" class="float-fruit fruit2"    alt="Floating Watermelon"/>
+
+  <div class="pdp">
+    <!-- Hero Image -->
+    <img src="Rupe.png" alt="Justin Rupe" class="hero-image"/>
+
+  <!-- Nav / Badge -->
+    <div class="nav">
+      <div class="logo">JUSTIN RUPE</div>
+      <button id="mothersChoiceBtn" class="badge">My Mother’s Choice</button>
+    </div>
+
+    <!-- Title & Reviews -->
+    <div class="title">“Curiosity builds bridges where doubt builds walls.”</div>
+    <div class="reviews">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="count">1 Rating • (801)499-7330</div>
+    </div>
+
+    <!-- Price & Stock -->
+    <div class="price-stock">
+      <div class="price">Price:❔ – ♾️</div>
+      <div class="stock">Handcrafted Original</div>
+    </div>
+
+    <!-- Product Details (Skills) -->
+    <div class="details">
+      <h3>Product details</h3>
+      <ul>
+        <li>E-Commerce Growth Strategy</li>
+        <li>AI Workflow Innovation</li>
+        <li>Human-First Consultative Sales</li>
+        <li>HubSpot CRM Automation</li>
+        <li>SEO &amp; Structured Data Optimization</li>
+        <li>Creative UX &amp; Web Design Principles</li>
+      </ul>
+      <p><strong>Origin:</strong> Bountiful, UT</p>
+      <p><strong>Work Type (Preferred):</strong> Remote</p>
+    </div>
+
+    <!-- About Section -->
+    <div class="about">
+      <h3>About</h3>
+      <p>
+        I'm a Girl Dad from Utah and currently I'm an Account Executive fueled by relentless curiosity, creative drive, and a people-first spirit. I believe the AI wave isn’t something to watch — it's something to build. My passion is helping businesses thrive at the crossroads of commerce, design, and innovation. If there's a train headed to the future, I’m not just on board — I'm up front driving it.
+      </p>
+    </div>
+
+    <!-- Q&A Section -->
+    <div class="qa">
+      <h3>Q&amp;A</h3>
+      <div class="question">Q: What makes you want to be a part of StackBlitz and what sets you apart?</div>
+      <div class="answer">
+        StackBlitz is building where the future’s already headed — faster, simpler, more open. I want to be part of that momentum, not just watch it happen.<br/>
+        What sets me apart is my curiosity and drive to build with people, not just for them. I move with respect first, energy second, and a mindset that’s always learning, always leveling up.
+      </div>
+      <div class="question">Q: What does your track record look like?</div>
+      <div class="answer">
+        Earned trust, delivered growth, and picked up a few wins along the way.<br/>
+        Still just getting started. Full track record → <a href="https://www.linkedin.com/in/justin-rupe">LinkedIn</a>
+      </div>
+      <div class="question">Q: When are you available to start?</div>
+      <div class="answer">Monday, May 12, 2025.</div>
+    </div>
+
+    <!-- Similar Items -->
+    <div class="details">
+      <h3>Similar items</h3>
+      <div class="similar">
+        <div class="item">NOT</div>
+        <div class="item">AVAILABLE</div>
+      </div>
+    </div>
+  </div>
+<script>
+  const ratingBlock      = document.getElementById('ratingBlock');
+  const mothersChoiceBtn = document.getElementById('mothersChoiceBtn');
+
+  function triggerPing() {
+    mothersChoiceBtn.classList.add('ping');
+    mothersChoiceBtn.addEventListener(
+      'animationend',
+      () => mothersChoiceBtn.classList.remove('ping'),
+      { once: true }
+    );
+  }
+
+  ratingBlock.addEventListener('mouseenter', triggerPing);
+  ratingBlock.addEventListener('click', triggerPing);
+</script>
+
+</body>
+</html>
